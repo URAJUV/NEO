@@ -21,16 +21,16 @@ void scan_n(int *a,int count){
 	return ;
 }
 
-void insert_sort(int *a,int count){
+void selection_sort(int *a,int count){
 	int i = 0,j = 0;
 	int temp = 0;
 	printf("\nSorting the array  in accending......\n");
-	for (i=2; i<count; i++){
-		for (j=0; j<i; j++){
-			if(a[j]>a[i]){
-				temp = a[j];
-				a[j] = a[i];
-				a[i] = temp;
+	for (i=0; i<count; i++){
+		for (j=i+1; j<count-i; j++){
+			if(a[i]>a[j]){
+				temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
 			}
 		}
 	}
@@ -49,7 +49,7 @@ int main(int argc ,char * argv[]){
 	scan_n(a,count);
 	print_n(a,count);
 	start = clock();
-	insert_sort(a,count);
+	selection_sort(a,count);
 	start = clock() - start;
 	time_taken = ((double)start)/CLOCKS_PER_SEC;
 	print_n(a,count);
